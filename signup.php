@@ -1,3 +1,4 @@
+<!-- Signup new user if doesn't already exist, add to database, and redirect to user page -->
 <?php
     
     include "search.php";
@@ -10,6 +11,7 @@
             $username = $_POST['username'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+            // check if username or email already exist in database
             $user_search = new Search("SELECT username FROM users WHERE username = '{$username}'", $conn);
             $if_user = $user_search->get_search_results()[0]['username'];
             $email_search = new Search("SELECT email FROM users WHERE email = '{$email}'", $conn);
@@ -26,6 +28,7 @@
         <?php
             }
             else {
+                // adds new user to database and redirects to user page
                 $sql_insert = "INSERT INTO users (firstname, lastname, email, username, hashed_password)
                 VALUES (?,?,?,?,?)";
 

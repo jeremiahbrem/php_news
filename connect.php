@@ -1,3 +1,4 @@
+<!-- Connect to MySQL database and create tables for users and favorites -->
 <?php
     session_start();
     $servername = "localhost";

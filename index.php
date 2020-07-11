@@ -6,6 +6,7 @@
 
 <?php include 'signup.php'; ?>
 
+<!-- signup form -->
 <form action="" method="POST">
     <label for="first-name">First Name</label>
     <input type="text" id="first-name" name="first-name" required><br>
@@ -24,6 +25,7 @@
 
 <?php include 'login.php'; ?>
 
+<!-- login form -->
 <form action="" method="POST">
     <label for="username-login">Username</label>
     <input type="text" id="username-login" name="username-login"><br>

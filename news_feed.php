@@ -1,3 +1,4 @@
+<!-- Displays all favorites stories from all users -->
 <?php include "templates/header.php"; ?>
 <?php include "login_check.php"; ?>
 
@@ -12,6 +13,7 @@
 <hr>
 
 <?php
+    // Retrieve all favorites form database, shuffle, and display to page
     $favorites_search = new Search("SELECT * FROM favorites;", $conn);
     $results = $favorites_search->get_search_results();
     shuffle($results);
