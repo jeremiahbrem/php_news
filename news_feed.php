@@ -1,6 +1,7 @@
 <!-- Displays all favorites stories from all users -->
 <?php include "templates/header.php"; ?>
 <?php include "login_check.php"; ?>
+<?php include "display_story.php"; ?>
 
 <h1>News Feed</h1>
 
@@ -13,19 +14,26 @@
 <hr>
 
 <?php
+    // array for saving to session where favorited stories can be retrieved later
+    $stories = array();
+    // array for checking duplicate titles
+    $titles =array();
     // Retrieve all favorites form database, shuffle, and display to page
     $favorites_search = new Search("SELECT * FROM favorites;", $conn);
     $results = $favorites_search->get_search_results();
-    shuffle($results);
-
-    for ($i = 0; $i < count($results); $i++) { 
-        $story = $results[$i]; ?>
-        <li>
-            <input type="checkbox" id="<?php echo $i; ?>" name="<?php echo $i; ?>">
-            <a href="<?php echo $story['website']; ?>"><?php echo $story['title']; ?></a></li><br>
-            Author: <?php echo $story['author']; ?><br>
-            Published: <?php echo substr($story['published'], 0, 10); ?><br>
-            <img style="width:250px;" src="<?php echo $story['image_url']; ?>" alt="">
-            <br><br><br>
-        </li> 
-    <?php } ?>
+    shuffle($results); ?>
+        <form action="favorites.php" method="POST">
+            <button type="submit">Add Favorites</button>
+            <ul>
+    <?php
+        for ($i = 0; $i < count($results); $i++) { 
+            $story = $results[$i];
+            if (!in_array($story['title'], $titles)) {
+                display_story($story, $i);
+                array_push($stories, $story);
+                array_push($titles, $story['title']);
+            }
+        } 
+        $_SESSION['stories'] = $stories; ?>
+            </ul>
+        </form>            

@@ -10,6 +10,7 @@
             $this->conn = $conn;
         }
 
+        // Submit SQL statement to database and return results
         public function get_search_results() {
             $statement = $this->conn->prepare($this->sql);
             $statement->execute();

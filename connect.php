@@ -23,10 +23,10 @@
         $sql2 = "CREATE TABLE IF NOT EXISTS favorites (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(255) NOT NULL,
-                website VARCHAR(255),
+                url VARCHAR(500),
                 author VARCHAR(100),
-                published VARCHAR(30),
-                image_url VARCHAR(255),
+                publishedAt VARCHAR(30),
+                urlToImage VARCHAR(500),
                 user_id INT,
                 FOREIGN KEY(user_id) REFERENCES users(id)
                 ) Engine=InnoDB;";  
