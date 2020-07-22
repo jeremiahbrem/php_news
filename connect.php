@@ -3,7 +3,7 @@
     session_start();
     $servername = "localhost";
     $username = "jbrem";
-    $password = "214aben";
+    $password = "#######";
     $dbname = "news_api";
 
     try {
