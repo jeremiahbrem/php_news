@@ -12,8 +12,10 @@
     
     // sends API request
     function get_stories(string $search) {
+        $formatted_string = str_replace(' ', '%20', $search);
         $key = getenv('NEWS_API_KEY');
-        $news_url = "http://newsapi.org/v2/everything?q={$search}&apiKey={$key}";
+        $news_url = "http://newsapi.org/v2/everything?q={$formatted_string}&apiKey={$key}";
+        print($news_url);
         $curl = curl_init($news_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
         $result = curl_exec($curl);
