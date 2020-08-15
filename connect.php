@@ -2,13 +2,8 @@
 <?php
     session_start();
     $servername = "localhost";
-<<<<<<< HEAD
-    $username = "jbrem";
-    $password = "#######";
-=======
-    $username = "jbrem";
-    $password = "#######";
->>>>>>> 3a0a481d5f3b82710488f8546bcbc29e214f2ffe
+    $username = getenv('MYSQL_LOGIN');
+    $password = getenv('MYSQL_PASSWORD');
     $dbname = "news_api";
 
     try {
